@@ -4,7 +4,7 @@ public class Pemilihan2Percobaan226 {
     public static void main(String[] args) {
         Scanner input26 = new Scanner(System.in);
         int pilihan_menu;
-        String member;
+        String member, qris;
         double diskon, harga, total_harga;
         
         System.out.println("-------------------------");
@@ -19,6 +19,8 @@ public class Pemilihan2Percobaan226 {
         input26.nextLine(); 
         System.out.print("Apakah punya member (y/n) ? = ");
         member = input26.nextLine();
+        System.out.print("Apakah menggunakan QRIS (y/n) ? = ");
+        qris = input26.nextLine();
         System.out.println("--------------------------------------");
 
         if(member.equalsIgnoreCase("y")){
@@ -39,7 +41,14 @@ public class Pemilihan2Percobaan226 {
             }
 
             total_harga = harga - (diskon*harga);
-            System.out.println("Total bayar setelah diskon = " + total_harga);
+            if(qris.equalsIgnoreCase("y")){
+                total_harga-=1000;
+                System.out.println("Total bayar setelah diskon = " + total_harga);
+            }else if(qris.equalsIgnoreCase("n")){
+                System.out.println("Total bayar setelah diskon = " + total_harga);
+            }else{
+                System.out.println("Pemilihan QRIS tidak valid");
+            }
         }else if(member.equalsIgnoreCase("n")){
             if(pilihan_menu == 1){
                 harga = 14000;
@@ -55,7 +64,14 @@ public class Pemilihan2Percobaan226 {
                 return;
             }
 
-            System.out.println("Total bayar = " + harga);
+            if(qris.equalsIgnoreCase("y")){
+                harga-=1000;
+                System.out.println("Total bayar setelah diskon = " + harga);
+            }else if(qris.equalsIgnoreCase("n")){
+                System.out.println("Total bayar setelah diskon = " + harga);
+            }else{
+                System.out.println("Pemilihan QRIS tidak valid");
+            }
         }else{
             System.out.println("Member tidak valid");
         }
